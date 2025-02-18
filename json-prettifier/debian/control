@@ -1,0 +1,15 @@
+Source: json-prettifier
+Section: misc
+Priority: optional
+Maintainer: Samy Badjoudj <samy.badjoudj@gmail.com>
+Build-Depends: debhelper (>= 9), cmake, libjson-glib-dev,libglib2.0-dev
+Standards-Version: 3.9.5
+Homepage: https://github.com/samyBadjoudj/old-playground/json-prettifier
+#Vcs-Git: git://anonscm.debian.org/collab-maint/json-prettifier.git
+#Vcs-Browser: http://anonscm.debian.org/?p=collab-maint/json-prettifier.git;a=summary
+
+Package: json-prettifier
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Print pretty json on stdoutput
+ print a well formatted json with colors

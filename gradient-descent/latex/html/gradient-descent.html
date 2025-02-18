@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>Gradient descent implementation&#8217;s example and application on Celestial
+mechanics</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="gradient-descent.tex"> 
+<link rel="stylesheet" type="text/css" href="gradient-descent.css"> 
+</head><body 
+>
+   <div class="maketitle">
+
+
+
+<h2 class="titleHead">Gradient descent implementation&#8217;s example and
+application on Celestial mechanics</h2>
+<div class="author" ><span 
+class="cmr-12">Samy Badjoudj</span></div><br />
+<div class="date" ><span 
+class="cmr-12">March 11, 2023</span></div>
+   </div>
+   <div 
+class="abstract" 
+>
+   <h3 class="abstracttitle">
+<span 
+class="cmbx-9">Abstract</span>
+</h3>
+     <!--l. 23--><p class="noindent" ><span 
+class="cmr-9">This   document   aims   to   describe   gradient   descent   algorithm,   its</span>
+     <span 
+class="cmr-9">implementations and how can it be used.</span>
+</div>
+   <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
+ id="x1-10001"></a>Introduction</h3>
+<!--l. 27--><p class="noindent" >1 Gradient descent is an optimization algorithm. The aim of gradient descent is to
+converge to a local minimum/maximum of a function. We call it a first order
+derivative iterative algorithm. It is labeled first order derivative, since we use first
+derivative of the function during the iterations.
+<!--l. 33--><p class="indent" >   There are plethora of applications, easy to imagine, as soon as you want to
+converge a local minimum/maximum (Machine Learning, mecanics, biology...). Since
+the algorithm is widely used, you can find it easily, in many libraries.
+<!--l. 36--><p class="indent" >   Here we will go through the basics of the theory, then we will apply it on a
+practical case, Earth Sun orbital system.
+<!--l. 38--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+ id="x1-20002"></a>Requirement</h3>
+<!--l. 41--><p class="noindent" >In order to apply the gradient descent algorithm using a function these conditions
+must be met.
+
+   <div class="par-math-display" >
+<img 
+src="gradient-descent0x.png" alt="Given f : Rn &#x2192; R, f(xn)then &#x2200;xn &#x2203; f&#x2032;(xn)
+" class="par-math-display" ></div>
+<!--l. 44--><p class="nopar" >
+<!--l. 46--><p class="indent" >   Few differentiable functions
+<div class="center" 
+>
+<!--l. 49--><p class="noindent" >
+<!--l. 50--><p class="noindent" ><hr class="figure"><div class="figure" 
+><a 
+ id="x1-2001r1"></a><a 
+ id="x1-2002r2"></a><a 
+ id="x1-2003r3"></a> <!--l. 52--><p class="noindent" ><img 
+src="x_y_surface.png" alt="PIC"  
+width="110" height="110" >
+ <br /> <div class="caption" 
+><span class="id">Figure&#x00A0;1: </span><span  
+class="content"><span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">2</span></sup> + <span 
+class="cmmi-10">y</span><sup><span 
+class="cmr-7">2</span></sup></span></div><!--tex4ht:label?: x1-2001r1 -->                             <!--l. 56--><p class="noindent" ><img 
+src="sin_x.png" alt="PIC"  
+width="110" height="110" >
+                                             <br /> <div class="caption" 
+><span class="id">Figure&#x00A0;2: </span><span  
+class="content"><span 
+class="cmmi-10">sin</span>(<span 
+class="cmmi-10">x</span>)</span></div><!--tex4ht:label?: x1-2002r2 -->
+<!--l. 60--><p class="noindent" ><img 
+src="x+13+x2.png" alt="PIC"  
+width="110" height="110" >
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;3: </span><span  
+class="content">(<span 
+class="cmmi-10">x</span>+1)<sup><span 
+class="cmr-7">3</span></sup>+<span 
+class="cmmi-10">x</span><sup><span 
+class="cmr-7">2</span></sup>(<span 
+class="cmmi-10">x</span>)</span></div><!--tex4ht:label?: x1-2003r3 -->
+</div><hr class="endfigure">
+</div>
+<!--l. 66--><p class="indent" >   Few non differentiable functions
+<div class="center" 
+>
+<!--l. 68--><p class="noindent" >
+<!--l. 69--><p class="noindent" ><hr class="figure"><div class="figure" 
+><a 
+ id="x1-2004r4"></a><a 
+ id="x1-2005r5"></a><a 
+ id="x1-2006r6"></a> <!--l. 71--><p class="noindent" ><img 
+src="1_over_x.png" alt="PIC"  
+width="110" height="110" >
+ <br /> <div class="caption" 
+><span class="id">Figure&#x00A0;4: </span><span  
+class="content">1<span 
+class="cmmi-10">&#x2215;x</span></span></div><!--tex4ht:label?: x1-2004r4 -->                                <!--l. 75--><p class="noindent" ><img 
+src="x_over_xabs.png" alt="PIC"  
+width="110" height="110" >
+                                             <br /> <div class="caption" 
+><span class="id">Figure&#x00A0;5: </span><span  
+class="content"><span 
+class="cmmi-10">x&#x2215;</span><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">x</span><span 
+class="cmsy-10">|</span></span></div><!--tex4ht:label?: x1-2005r5 -->
+<!--l. 79--><p class="noindent" ><img 
+src="x_abs.png" alt="PIC"  
+width="110" height="110" >
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;6: </span><span  
+class="content"><span 
+class="cmsy-10">|</span><span 
+class="cmmi-10">x</span><span 
+class="cmsy-10">|</span></span></div><!--tex4ht:label?: x1-2006r6 -->
+</div><hr class="endfigure">
+</div>
+<!--l. 85--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
+ id="x1-30003"></a>Algorithm description</h3>
+<!--l. 86--><p class="noindent" >The algorithm consist in finding the minimum through an iterative process. The
+value <span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">min</span></sub> will be updated and will end with the value we are looking for.
+<br 
+class="newline" /><br 
+class="newline" />Let&#8217;s define some parameters
+<!--l. 91--><p class="indent" >
+     <ol  class="enumerate1" >
+<li 
+  class="enumerate" id="x1-3002x1">
+     <!--l. 92--><p class="noindent" > <span 
+class="cmmi-10">f </span>: <span 
+class="cmmi-10">R</span><sup><span 
+class="cmmi-7">n</span></sup> <span 
+class="cmsy-10">&#x2192; </span><span 
+class="cmmi-10">R, noted f</span>(<span 
+class="cmmi-10">x</span><sub><span 
+class="cmmi-7">n</span></sub>) <span 
+class="cmmi-10">where x</span><sub><span 
+class="cmmi-7">n</span></sub> <span 
+class="cmsy-10">&#x2208; </span><span 
+class="cmmi-10">R</span>
+     </li>
+<li 
+  class="enumerate" id="x1-3004x2">
+     <!--l. 93--><p class="noindent" ><span 
+class="cmmi-10">&#x03B1; </span>a scalar as learning rate
+
+     </li>
+<li 
+  class="enumerate" id="x1-3006x3">
+     <!--l. 94--><p class="noindent" >M as number of iterations
+     </li>
+<li 
+  class="enumerate" id="x1-3008x4">
+     <!--l. 95--><p class="noindent" >i current iteration
+     </li>
+<li 
+  class="enumerate" id="x1-3010x5">
+     <!--l. 96--><p class="noindent" ><span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">i</span></sub> current point
+     </li>
+<li 
+  class="enumerate" id="x1-3012x6">
+     <!--l. 97--><p class="noindent" ><span 
+class="cmsy-10">&#x2207;</span><span 
+class="cmmi-10">f</span>(<span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">i</span></sub>) as gradient
+     </li></ol>
+<div class="algorithm">
+
+<!--l. 102--><p class="indent" >   <hr class="float"><div class="float" 
+>
+
+<div class="algorithmic">
+       <span class="label-11.99998pt">
+ <span 
+class="cmr-8">1:</span> </span>&#xA0;<span 
+class="algorithmic">&#x00A0;<span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">i</span></sub> <span 
+class="cmsy-10">&#x2190; </span>[<span 
+class="cmmi-10">a</span><sub><span 
+class="cmr-7">0</span></sub><span 
+class="cmmi-10">,a</span><sub><span 
+class="cmr-7">1</span></sub><span 
+class="cmmi-10">..</span>]                                                   <img  src="gradient-descent1x.png" alt="&#x22B3;  "  class="math" > initialize starting    point        </span><br class="algorithmic"/><span class="label-11.99998pt">  <span 
+class="cmr-8">2:</span> </span>&#xA0;<span  class="algorithmic">&#x00A0;<span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">min</span></sub> <span 
+class="cmsy-10">&#x2190; </span><span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">i</span></sub>                                                                   <img  src="gradient-descent2x.png" alt="&#x22B3;  "  class="math" > initialize    minumum        </span><br class="algorithmic"/><span class="label-11.99998pt">  <span 
+class="cmr-8">3:</span> </span>&#xA0;<span  class="algorithmic">&#x00A0;<span 
+class="cmmi-10">M </span><span 
+class="cmsy-10">&#x2190; </span>50                                                                <img  src="gradient-descent3x.png" alt="&#x22B3;  "  class="math" > maxmium of    iterations        </span><br class="algorithmic"/><span class="label-11.99998pt">  <span 
+class="cmr-8">4:</span> </span>&#xA0;<span  class="algorithmic">&#x00A0;<span 
+class="cmmi-10">&#x03B1; </span><span 
+class="cmsy-10">&#x2190; </span><span 
+class="cmmi-10">random</span>(]0<span 
+class="cmmi-10">,</span>1[)                                             <img  src="gradient-descent4x.png" alt="&#x22B3;  "  class="math" > ranged learning    rate        </span><br class="algorithmic"/><span class="label-11.99998pt">  <span 
+class="cmr-8">5:</span> </span>&#xA0;<span  class="algorithmic">&#x00A0;<span 
+class="cmbx-10">for</span>&#x00A0;<span 
+class="cmmi-10">i </span>= 0, <span 
+class="cmmi-10">i &#x003C; M</span>, <span 
+class="cmmi-10">i </span>+ +&#x00A0;<span 
+class="cmbx-10">do</span>        </span><br class="algorithmic"/><span class="label-11.99998pt">  <span 
+class="cmr-8">6:</span> </span>&#xA0;<span  class="algorithmic">&#x00A0;    <span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">+1</span></sub> <span 
+class="cmsy-10">&#x2190; </span><span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">i</span></sub> <span 
+class="cmsy-10">- </span><span 
+class="cmmi-10">&#x03B1; </span><span 
+class="cmsy-10">*&#x2207;</span><span 
+class="cmmi-10">f</span>(<span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">i</span></sub>)        </span><br class="algorithmic"/><span class="label-11.99998pt">  <span 
+class="cmr-8">7:</span> </span>&#xA0;<span  class="algorithmic">&#x00A0;    <span 
+class="cmbx-10">if</span>&#x00A0;<span 
+class="cmmi-10">f</span>(<span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">n</span><span 
+class="cmr-7">+1</span></sub>) <span 
+class="cmmi-10">&#x003C; f</span>(<span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">min</span></sub>)&#x00A0;<span 
+class="cmbx-10">then</span>        </span><br class="algorithmic"/><span class="label-11.99998pt">  <span 
+class="cmr-8">8:</span> </span>&#xA0;<span  class="algorithmic">&#x00A0;             <span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">min</span></sub> <span 
+class="cmsy-10">&#x2190; </span><span 
+class="cmmi-10">S</span><sub><span 
+class="cmmi-7">i</span><span 
+class="cmr-7">+1</span></sub>                                                <img  src="gradient-descent5x.png" alt="&#x22B3;  "  class="math" > update minium if    necessary        </span><br class="algorithmic"/><span class="label-11.99998pt">  <span 
+class="cmr-8">9:</span> </span>&#xA0;<span  class="algorithmic">&#x00A0;    <span 
+class="cmbx-10">end</span>&#x00A0;<span 
+class="cmbx-10">if</span>        </span><br class="algorithmic"/><span class="label-11.99998pt"> <span 
+class="cmr-8">10:</span> </span>&#xA0;<span  class="algorithmic">&#x00A0;<span 
+class="cmbx-10">end</span>&#x00A0;<span 
+class="cmbx-10">for</span></span>
+</div>
+
+   </div><hr class="endfloat" />
+</div>
+   <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
+ id="x1-40004"></a>Application on orbital Earth Sun system</h3>
+<!--l. 126--><p class="noindent" >Let&#8217;s apply this algorithmic on a concrete case. Earth Sun system could be an
+interesting candidate.
+<!--l. 128--><p class="indent" >   In our Solar system Earth orbits around the Sun along an ellipse in a period of <span 
+class="msam-10">&#x2243;</span>
+365 <span 
+class="cmmi-10">days </span>with an average speed of 29.7827 <span 
+class="cmmi-10">km.s</span><sup><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">1</span></sup> . <br 
+class="newline" /><br 
+class="newline" />Here is a figure that helps visualize (ellipse is flatened on purpose) :
+<div class="center" 
+>
+<!--l. 135--><p class="noindent" >
+<!--l. 136--><p class="noindent" ><hr class="figure"><div class="figure" 
+><a 
+ id="x1-4001r7"></a>
+<div class="center" 
+>
+<!--l. 137--><p class="noindent" >
+<!--l. 138--><p class="noindent" ><img 
+src="true_anomaly.png" alt="PIC"  
+width="225" height="200" >
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;7: </span><span  
+class="content">Orbital Earth Sun system</span></div><!--tex4ht:label?: x1-4001r7 -->
+</div>
+<!--l. 142--><p class="noindent" ></div><hr class="endfigure">
+</div>
+<!--l. 145--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">4.1   </span> <a 
+ id="x1-50004.1"></a>Ellipse caracteristics</h4>
+<!--l. 148--><p class="noindent" >Few elements that caracterizes an ellipse <span 
+class="cmmi-10">d </span>:
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 151--><p class="noindent" >Semi-major axis <span 
+class="cmmi-10">m </span>=<span class="overline"> <span 
+class="cmmi-10">F A</span></span>
+     </li>
+     <li class="itemize">
+     <!--l. 152--><p class="noindent" >Semi-minor axis <span 
+class="cmmi-10">n </span>=<span class="overline"> <span 
+class="cmmi-10">H A</span></span>
+     </li>
+     <li class="itemize">
+     <!--l. 153--><p class="noindent" >Right focal length <span 
+class="cmmi-10">g </span>=<span class="overline"> <span 
+class="cmmi-10">ASun</span></span>
+     </li>
+     <li class="itemize">
+     <!--l. 154--><p class="noindent" >Two focuses, points <span 
+class="cmmi-10">C </span>and <span 
+class="cmmi-10">S</span>
+
+     </li>
+     <li class="itemize">
+     <!--l. 155--><p class="noindent" >Eccentricity = <img 
+src="gradient-descent6x.png" alt="g-
+m"  class="frac" align="middle"> = <img 
+src="gradient-descent7x.png" alt="&#x2218; ----n-2-
+  1- (m )"  class="sqrt" >
+     </li>
+     <li class="itemize">
+     <!--l. 156--><p class="noindent" >Any point <span 
+class="cmmi-10">P </span>located on the ellipse (<span 
+class="cmmi-10">x,y</span>) = (<span 
+class="cmmi-10">mcos</span>(<span 
+class="cmmi-10">t</span>)<span 
+class="cmmi-10">,nsin</span>(<span 
+class="cmmi-10">t</span>))<span 
+class="cmmi-10">,t </span><span 
+class="cmsy-10">&#x2264; </span>0 <span 
+class="cmsy-10">&#x2264; </span>2<span 
+class="cmmi-10">&#x03C0;</span></li></ul>
+<!--l. 159--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">4.2   </span> <a 
+ id="x1-60004.2"></a>Orbital Earth Sun system description</h4>
+<!--l. 160--><p class="noindent" >We are interested in computing the orbital speed of the Earth around the Sun. To
+have a better understanding, let&#8217;s write some contextuel formulas notions and
+data.
+<!--l. 162--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">4.2.1   </span> <a 
+ id="x1-70004.2.1"></a>Some parameters</h5>
+     <ul class="itemize1">
+     <li class="itemize">
+     <!--l. 165--><p class="noindent" >True anomaly (<span 
+class="cmmi-10">&#x03B1; </span>in Figure 7) angle <span 
+class="msam-10">&#x2220;</span><span 
+class="cmmi-10">EarthSunG</span>
+     </li>
+     <li class="itemize">
+     <!--l. 166--><p class="noindent" >Orbital speed, speed of Earth orbiting around the Sun&#8217;s center
+     </li>
+     <li class="itemize">
+     <!--l. 167--><p class="noindent" ><span 
+class="cmmi-10">G  </span><span 
+class="msam-10">&#x2243; </span>6<span 
+class="cmmi-10">.</span>674  <span 
+class="cmsy-10">&#x00D7; </span>10<sup><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">11</span></sup> <span 
+class="cmmi-10">m</span><sup><span 
+class="cmr-7">3</span></sup><span 
+class="cmmi-10">.kg</span><sup><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">1</span></sup><span 
+class="cmmi-10">.s</span><sup><span 
+class="cmsy-7">-</span><span 
+class="cmr-7">2</span></sup>  empirical  constant  factor  used  when
+     describing force between two objects
+     </li>
+     <li class="itemize">
+     <!--l. 168--><p class="noindent" >AU, Astronomical Unit, disance between Earth Sun, 1<span 
+class="cmmi-10">.</span>4959787 <span 
+class="cmsy-10">&#x00D7; </span>10<sup><span 
+class="cmr-7">11</span></sup><span 
+class="cmmi-10">m</span>
+     </li>
+     <li class="itemize">
+     <!--l. 169--><p class="noindent" >Aphelion 152<span 
+class="cmmi-10">,</span>097<span 
+class="cmmi-10">,</span>597<span 
+class="cmmi-10">km</span>, distance when Earth is the furthest from the
+     Sun
+     </li>
+     <li class="itemize">
+     <!--l. 170--><p class="noindent" >Perihelion 147<span 
+class="cmmi-10">,</span>098<span 
+class="cmmi-10">,</span>450<span 
+class="cmmi-10">km</span>, distance when Earth is the nearest from the
+     Sun
+
+     </li>
+     <li class="itemize">
+     <!--l. 171--><p class="noindent" >Semi-major axis 149<span 
+class="cmmi-10">,</span>598<span 
+class="cmmi-10">,</span>023<span 
+class="cmmi-10">km </span>(ellipse figure is flattened for visibility)
+     </li>
+     <li class="itemize">
+     <!--l. 172--><p class="noindent" >Eccentricity 0.0167086
+     </li>
+     <li class="itemize">
+     <!--l. 173--><p class="noindent" >Vis-Viva                                                                         equation:
+     <span 
+class="cmmi-10">OrbitalSpeed </span>= <img 
+src="gradient-descent8x.png" alt="&#x2218; ------------------------------------
+  G &#x00D7;SunM  ass&#x00D7; (ra2dius - SemiMa1jorAxis)"  class="sqrt" ></li></ul>
+<!--l. 176--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
+ id="x1-80005"></a>Example of implementation</h3>
+<!--l. 177--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">5.1   </span> <a 
+ id="x1-90005.1"></a>Code relative to Earth Sun System</h4>
+<!--l. 178--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">5.1.1   </span> <a 
+ id="x1-100005.1.1"></a>Compute Radius from Sun <span 
+class="cmsy-10">&#x2261; </span>focus on the right, in Km</h5>
+<div class="center" 
+>
+<!--l. 180--><p class="noindent" >
+<!--l. 181--><p class="noindent" ><img 
+src="get_radius_from_focus_in_km.png" alt="PIC"  
+width="401" height="401" ></div>
+<!--l. 186--><p class="noindent" >
+   <h5 class="subsubsectionHead"><span class="titlemark">5.1.2   </span> <a 
+ id="x1-110005.1.2"></a>Compute orbital speed around massive object</h5>
+<div class="center" 
+>
+<!--l. 187--><p class="noindent" >
+<!--l. 188--><p class="noindent" ><img 
+src="get_orbital_speed.png" alt="PIC"  
+width="401" height="401" ></div>
+
+<!--l. 193--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">5.2   </span> <a 
+ id="x1-120005.2"></a>Example of Gradient descent Implementation</h4>
+<div class="center" 
+>
+<!--l. 195--><p class="noindent" >
+<!--l. 196--><p class="noindent" ><img 
+src="get_min_gradient_descent.png" alt="PIC"  
+width="401" height="401" ></div>
+<!--l. 200--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">5.3   </span> <a 
+ id="x1-130005.3"></a>Gradient descent graph</h4>
+<div class="center" 
+>
+<!--l. 201--><p class="noindent" >
+<!--l. 202--><p class="noindent" ><hr class="figure"><div class="figure" 
+><a 
+ id="x1-13001r8"></a>
+<div class="center" 
+>
+<!--l. 203--><p class="noindent" >
+<!--l. 204--><p class="noindent" ><img 
+src="gradient_descent.png" alt="PIC"  
+width="346" height="250" >
+<br /> <div class="caption" 
+><span class="id">Figure&#x00A0;8: </span><span  
+class="content">Orbital Earth Sun system</span></div><!--tex4ht:label?: x1-13001r8 -->
+</div>
+<!--l. 208--><p class="noindent" ></div><hr class="endfigure">
+</div>
+<!--l. 210--><p class="noindent" >In red we see the orbital speed oscilliating between <span 
+class="cmsy-10">&#x2261; </span>30,3 km/s and 29,3 km/s.
+<br 
+class="newline" /><br 
+class="newline" />If we draw the function for degrees more than 360<span 
+class="tcrm-1000">°</span>, we will see more clearly that the
+funciton is periodic with a period of 360<span 
+class="tcrm-1000">°</span>(2<span 
+class="cmmi-10">&#x03C0; </span>in gradient). <br 
+class="newline" />
+<!--l. 216--><p class="indent" >   Then we see in blue the path followed by the gradient descent (<span 
+class="cmmi-10">&#x03B1; </span>learning rate has
+been put high on purpose to see the broken line).
+<!--l. 218--><p class="indent" >   We can notice that over the iterations, the blue, follows the red curve. The blue
+curve is a broken line, the gradient direction scaled by the learning rate.
+<br 
+class="newline" />Behind the scenes, the algorithm keeps track of the minimum. Here we can see that
+green line, is drawn at 180 <span 
+class="tcrm-1000">°</span>(<span 
+class="cmmi-10">e.q &#x03C0; radians</span>),
+<!--l. 222--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">5.4   </span> <a 
+ id="x1-140005.4"></a>Comments on results</h4>
+
+<!--l. 224--><p class="noindent" >The above implementation shows how a local minimum can be found by using a first
+derivative order, and a simple structured algorithm. Gradient descent, can be scaled
+to a function with higher dimensions. <br 
+class="newline" />
+<!--l. 226--><p class="indent" >   Depending on the problem we want to solve, Gradient descent can be seen as a
+solution for a subproblem. We will see in a next article in the context of machine
+learning, how we can leverage Gradient descent to solve a polynomial regression
+problem.
+    
+</body></html> 
+
+
+

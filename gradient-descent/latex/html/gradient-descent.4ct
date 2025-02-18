@@ -1,0 +1,24 @@
+\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi 
+\doTocEntry\tocsection{1}{\csname a:TocLink\endcsname{1}{x1-10001}{QQ2-1-1}{Introduction}}{3}\relax 
+\doTocEntry\tocsection{2}{\csname a:TocLink\endcsname{1}{x1-20002}{QQ2-1-2}{Requirement}}{3}\relax 
+\doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-2001r1}{}{\ignorespaces $ x^2+y^2$}}{figure}\relax 
+\doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-2002r2}{}{\ignorespaces $sin(x)$}}{figure}\relax 
+\doTocEntry\toclof{3}{\csname a:TocLink\endcsname{1}{x1-2003r3}{}{\ignorespaces $(x+1)^3+x^2(x)$}}{figure}\relax 
+\doTocEntry\toclof{4}{\csname a:TocLink\endcsname{1}{x1-2004r4}{}{\ignorespaces $1/x$}}{figure}\relax 
+\doTocEntry\toclof{5}{\csname a:TocLink\endcsname{1}{x1-2005r5}{}{\ignorespaces $x/|x|$}}{figure}\relax 
+\doTocEntry\toclof{6}{\csname a:TocLink\endcsname{1}{x1-2006r6}{}{\ignorespaces $|x|$}}{figure}\relax 
+\doTocEntry\tocsection{3}{\csname a:TocLink\endcsname{1}{x1-30003}{QQ2-1-9}{Algorithm description}}{4}\relax 
+\doTocEntry\tocsection{4}{\csname a:TocLink\endcsname{1}{x1-40004}{QQ2-1-10}{Application on orbital Earth Sun system}}{8}\relax 
+\doTocEntry\toclof{7}{\csname a:TocLink\endcsname{1}{x1-4001r7}{}{\ignorespaces Orbital Earth Sun system}}{figure}\relax 
+\doTocEntry\tocsubsection{4.1}{\csname a:TocLink\endcsname{1}{x1-50004.1}{QQ2-1-12}{Ellipse caracteristics}}{8}\relax 
+\doTocEntry\tocsubsection{4.2}{\csname a:TocLink\endcsname{1}{x1-60004.2}{QQ2-1-13}{Orbital Earth Sun system description}}{9}\relax 
+\doTocEntry\tocsubsubsection{4.2.1}{\csname a:TocLink\endcsname{1}{x1-70004.2.1}{QQ2-1-14}{Some parameters}}{9}\relax 
+\doTocEntry\tocsection{5}{\csname a:TocLink\endcsname{1}{x1-80005}{QQ2-1-15}{Example of implementation}}{10}\relax 
+\doTocEntry\tocsubsection{5.1}{\csname a:TocLink\endcsname{1}{x1-90005.1}{QQ2-1-16}{Code relative to Earth Sun System}}{10}\relax 
+\doTocEntry\tocsubsubsection{5.1.1}{\csname a:TocLink\endcsname{1}{x1-100005.1.1}{QQ2-1-17}{Compute Radius from Sun $\equiv $ focus on the right, in Km}}{10}\relax 
+\doTocEntry\tocsubsubsection{5.1.2}{\csname a:TocLink\endcsname{1}{x1-110005.1.2}{QQ2-1-18}{Compute orbital speed around massive object}}{10}\relax 
+\doTocEntry\tocsubsection{5.2}{\csname a:TocLink\endcsname{1}{x1-120005.2}{QQ2-1-19}{Example of Gradient descent Implementation}}{11}\relax 
+\doTocEntry\tocsubsection{5.3}{\csname a:TocLink\endcsname{1}{x1-130005.3}{QQ2-1-20}{Gradient descent graph}}{11}\relax 
+\doTocEntry\toclof{8}{\csname a:TocLink\endcsname{1}{x1-13001r8}{}{\ignorespaces Orbital Earth Sun system}}{figure}\relax 
+\doTocEntry\tocsubsection{5.4}{\csname a:TocLink\endcsname{1}{x1-140005.4}{QQ2-1-22}{Comments on results}}{11}\relax 
+\par 

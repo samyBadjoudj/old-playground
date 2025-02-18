@@ -1,0 +1,254 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tabto}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{amsmath}
+
+%opening
+\title{Gradient descent implementation example applied to Celestial mechanics}
+\author{Samy Badjoudj}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+This document aims to describe gradient descent algorithm, its implementations and how it can be used on a simple celestial mechanics example.
+\end{abstract}
+
+\section{Introduction}
+1
+Gradient descent is an optimization algorithm.
+The aim of gradient descent is to converge to a local minimum/maximum of a function. If the function is strictly convex then it will be a global extremum.
+It is labeled first order iterative algorithm, since we use first order partial derivatives of the function through iterations.
+\newline
+\newline
+
+There are plethora of applications, easy to imagine, that requires converging to a minimum/maximum (Machine Learning, mechanics, biology...), often the function we want to minimize is called cost function noted $J(\theta_{n})$.
+\newline
+\newline
+Since Gradient descent is widely used, you can find easily an implementation in many programming languages.
+\newline
+\newline
+
+Here we will go through the basics of the theory, then we will apply it on a practical case, Earth Sun orbital system.
+
+\section{Requirement}
+
+
+In order to apply the gradient descent algorithm using a function these conditions must be met.
+
+Given $\:f:R^n \rightarrow R, \: \: f(x_{n}) \:$  then$\: 
+\forall x_{n}\:  \exists\: f'(x_{n})$
+
+We have $ f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h} $ must exist
+\pagebreak
+\begin{center}
+    \begin{figure}
+    \subsection{Few differentiable functions}
+
+        \minipage{0.32\textwidth}
+        \includegraphics[width=\linewidth]{x_y_surface.png}
+        \caption{$ x^2+y^2$}\label{fig:awesome_image1}
+        \endminipage\hfill
+        \minipage{0.32\textwidth}
+        \includegraphics[width=\linewidth]{sin_x.png}
+        \caption{$sin(x)$}\label{fig:awesome_image2}
+        \endminipage\hfill
+        \minipage{0.32\textwidth}%
+        \includegraphics[width=\linewidth]{x+13+x2.png}
+        \caption{$(x+1)^3+x^2(x)$}\label{fig:awesome_image3}
+        \endminipage
+    \end{figure}
+\end{center}
+
+
+\begin{center}
+    \begin{figure}
+    \subsection{Few non differentiable functions}
+
+        \minipage{0.32\textwidth}
+        \includegraphics[width=\linewidth]{1_over_x.png}
+        \caption{$1/x$}\label{fig:d}
+        \endminipage\hfill
+        \minipage{0.32\textwidth}
+        \includegraphics[width=\linewidth]{x_over_xabs.png}
+        \caption{$x/|x|$}\label{fig:awesome_image2}
+        \endminipage\hfill
+        \minipage{0.32\textwidth}
+        \includegraphics[width=\linewidth]{x_abs.png}
+        \caption{$|x|$}\label{fig:awesome_image3}
+        \endminipage
+    \end{figure}
+\end{center}
+
+
+\emph {Note: that the algorithm, can fall on what we call a saddle point, meaning for a given point $(x_{0},y_{0})$ we have $f_{x}(x_{0},y_{0})= 0$ and$f_{y}(x_{0},y_{0})= 0$  so defined as critical point, but since it is not an extremum, it ends up being only a saddle point. To sort it out we can use the Hessian matrix for \href{https://en.wikipedia.org/wiki/Second_partial_derivative_test}{a second partial derivatives test}}
+
+
+\pagebreak
+\section{Gradient descent algorithm description}
+
+The algorithm consist in finding the minimum through an iterative process. The value $S_{min}$ will be updated and will end with the value we are looking for.
+\newline
+\newline
+Let's define some parameters
+
+\begin{enumerate}
+  \item $\:f:R^n \rightarrow R,\: noted\:  f(x_{n})  \: where\:  x_{n} \in R$
+  \item $\alpha$ a scalar as learning rate
+  \item M as number of iterations
+  \item i current iteration
+  \item $S_{i}$ current point
+  \item $\nabla f(S_{i})$  where the gradient is $
+\nabla f(\left.x_{1}, x_{2}, \ldots, x_{n}\right)=\left[\begin{array}{c}
+\dfrac{\partial f}{\partial x_1}(\left.x_{1}, x_{2}, \ldots, x_{n}\right)\\
+\dfrac{\partial f}{\partial x_2}(\left.x_{1}, x_{2}, \ldots, x_{n}\right) \\
+\vdots \\
+\dfrac{\partial f}{\partial x_n}(\left.x_{1}, x_{2}, \ldots, x_{n}\right) 
+\end{array}\right]
+$
+
+\end{enumerate}
+\begin{algorithm}
+% \caption{Gradient descent}
+\begin{algorithmic}[1]
+% \REQUIRE $n \geq 0 \vee x \neq 0$
+\State $S_{i} \leftarrow [a_{0},a_{1}..] $\hfill\Comment{initialize starting point}
+
+\State $S_{min} \leftarrow S_{i}$ \hfill\Comment{initialize minimum}
+
+\State $M \leftarrow 50 $\hfill\Comment{maximum of iterations}
+
+\State $\alpha \leftarrow \,]0,1[\,$ \hfill\Comment{ranged learning rate}
+
+\For {$i=0$, $i<M$, $i++$}
+\State $S_{i+1} \leftarrow  S_{i} - \alpha*\nabla f(S_{i})$ 
+
+\If{$f(S_{n+1}) < f(S_{min})$}
+\State \:\:\:\: $S_{min} \leftarrow S_{i+1}$\hfill\Comment{update minimum if necessary}
+\EndIf
+
+\If{$stopping\,criterion\,met$}
+\State \:\:\:\: $break$\hfill\Comment{criterion can be a chosen treshold}
+\EndIf
+\EndFor
+% \WHILE{$N \neq 0$}
+% \STATE $N \leftarrow n$
+% \ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+\section{Application on orbital Earth Sun system}
+Let's apply this algorithmic on a concrete case. Earth Sun system could be an interesting candidate.
+
+In our Solar system Earth orbits around the Sun along an ellipse in a period of $\backsimeq$ 365 $days$ with an average speed of 29.7827\,$km.s^{-1}$ .
+\newline\newline
+Here is a figure that helps visualize (ellipse is flatened on purpose) :
+
+
+
+
+\begin{center}
+    \begin{figure}[!htb]
+    \begin{center}
+ \includegraphics[width=225px,height=200px]{true_anomaly.png}
+ \caption{Orbital Earth Sun system}
+\centering
+\end{center}
+    \end{figure}
+\end{center}
+
+\subsection{Ellipse characteristics}
+
+
+Few elements that characterizes an ellipse $d$ :
+
+\begin{itemize}
+   \item Semi-major axis $m=\overline{\rm F\,A}$
+   \item Semi-minor axis $n=\overline{\rm H\,A}$
+   \item Right focal length $g=\overline{\rm A\,Sun}$
+   \item Two focuses, points $C$ and $S$
+   \item Eccentricity $=\frac{g}{m} = \sqrt{1-(\frac{n}{m})^2}$ 
+   \item Any point $P$ located on the ellipse $(x,y)=(mcos(t),nsin(t)), t \leq0\leq2\pi$
+\end{itemize}
+
+\subsection{Orbital Earth Sun system description}
+We are interested in computing the orbital speed of the Earth around the Sun. To have a better understanding, let's write some contextual formulas notions and data.
+
+\subsubsection{Some parameters}
+
+\begin{itemize}
+   \item True anomaly ($\alpha$ in Figure 7) angle $\angle Earth\,Sun\,G$
+   \item Orbital speed, speed of Earth orbiting around the Sun's center
+   \item $G \backsimeq 6.674\,\times 10^{-11}\,m^{3}.kg^{-1}.s^{-2}$ empirical constant factor used when describing force between two objects
+   \item AU, Astronomical Unit, distance between Earth Sun, $1.4959787\times 10^{11} m$
+   \item Aphelion $152,097,597\,km$, distance when Earth is the furthest from the Sun
+   \item Perihelion $147,098,450\,km$, distance when Earth is the nearest from the Sun
+   \item Semi-major axis $149,598,023\,km$ (ellipse figure is flattened for visibility)
+   \item Eccentricity 0.0167086
+   \item Vis-Viva equation: $Orbital Speed=\sqrt{G\times SunMass\times(\frac{2}{radius}-\frac{1}{Semi Major Axis})} $
+\end{itemize}
+
+\section{Example of implementation}
+\subsection{Code relative to Earth Sun System}
+\subsubsection{Compute Radius from Sun $\equiv$ focus on the right, in Km}
+
+\begin{center}
+ \includegraphics[width=400px,keepaspectratio=true]{get_radius_from_focus_in_km.PNG}
+ % get_radius_from_focus_in_km.PNG: 0x0 px, 0dpi, nanxnan cm, bb=
+\end{center}
+
+
+\subsubsection{Compute orbital speed around massive object}
+\begin{center}
+ \includegraphics[width=400px,keepaspectratio=true]{get_orbital_speed.PNG}
+ % get_orbital_speed.PNG: 0x0 px, 0dpi, nanxnan cm, bb=
+\end{center}
+
+\subsection{Example of Gradient descent Implementation}
+
+\begin{center}
+ \includegraphics[width=400px,keepaspectratio=true]{get_min_gradient_descent.PNG}
+ % get_orbital_speed.PNG: 0x0 px, 0dpi, nanxnan cm, bb=
+\end{center}
+
+\pagebreak
+\begin{center}
+    \begin{figure}
+    \subsection{Gradient descent plot}
+    \begin{center}
+ \includegraphics[width=345px,height=250px]{gradient_descent.png}
+ \caption{Orbital Earth Sun system}
+\centering
+\end{center}
+    \end{figure}
+\end{center}
+In red we see the orbital speed oscillating between $\equiv$ 30,3 km/s and 29,3 km/s.
+\newline
+\newline
+If we draw the function for degrees more than 360\textdegree, we will see more clearly that the function is periodic with a period of 360\textdegree ($2 \pi$ in gradient).
+\newline
+\newline
+Then we see in blue the path followed by the gradient descent ($\alpha$ learning rate has been put high on purpose to see the broken line). 
+\newline
+\newline
+We can notice that over the iterations, the blue, follows the red curve. The blue curve is a broken line, the gradient direction scaled by the learning rate.
+\newline
+Behind the scenes, the algorithm keeps track of the minimum. Here we can see that green line, is drawn at 180 \textdegree ($e.q\, \pi\,radians$).
+
+\subsection{Comments on results}
+
+The above implementation shows how a minimum can be found by using a first derivative order, and a simple structured algorithm. Gradient descent, can be scaled to a function with higher dimensions. \newline
+
+We will see in a next article in the context of machine learning, how we can leverage Gradient descent to solve a polynomial regression problem, by minimizing the cost function 
+
+\end{document}
+

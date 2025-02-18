@@ -1,0 +1,226 @@
+{
+  "catalog": {
+    "title": "My catalog",
+    "books": [
+      {
+        "title": "Illiade H.",
+        "categories": [
+          {
+            "name": "history",
+            "rate": 4
+          },
+          {
+            "name": "poetry",
+            "rate": 2
+          },
+          {
+            "name": "ancient times",
+            "rate": 5
+          },
+          {
+            "name": "science fiction",
+            "rate": 0
+          },
+          {
+            "name": "selfhelp",
+            "rate": 0
+          },
+          {
+            "name": "classic",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "title": "Odyssee H.",
+        "categories": [
+          {
+            "name": "history",
+            "rate": 5
+          },
+          {
+            "name": "poetry",
+            "rate": 2
+          },
+          {
+            "name": "ancient times",
+            "rate": 5
+          },
+          {
+            "name": "science fiction",
+            "rate": 0
+          },
+          {
+            "name": "selfhelp",
+            "rate": 0
+          },
+          {
+            "name": "classic",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "title": "La nouvelle Héloïse JJ.R.",
+        "categories": [
+          {
+            "name": "philosophy",
+            "rate": 3
+          },
+          {
+            "name": "poetry",
+            "rate": 5
+          },
+          {
+            "name": "ancient times",
+            "rate": 2
+          },
+          {
+            "name": "science fiction",
+            "rate": 0
+          },
+          {
+            "name": "selfhelp",
+            "rate": 0
+          },
+          {
+            "name": "classic",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "title": "Dune F.H.",
+        "categories": [
+          {
+            "name": "philosophy",
+            "rate": 0
+          },
+          {
+            "name": "poetry",
+            "rate": 0
+          },
+          {
+            "name": "ancient times",
+            "rate": 0
+          },
+          {
+            "name": "science fiction",
+            "rate": 5
+          },
+          {
+            "name": "selfhelp",
+            "rate": 0
+          },
+          {
+            "name": "classic",
+            "rate": 3
+          }
+        ]
+      },
+      {
+        "title": "The Prince M.",
+        "categories": [
+          {
+            "name": "philosophy",
+            "rate": 4
+          },
+          {
+            "name": "history",
+            "rate": 4
+          },
+          {
+            "name": "ancient times",
+            "rate": 4
+          },
+          {
+            "name": "science fiction",
+            "rate": 0
+          },
+          {
+            "name": "classic",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "title": "Brave New World A.H.",
+        "categories": [
+          {
+            "name": "philosophy",
+            "rate": 3
+          },
+          {
+            "name": "poetry",
+            "rate": 0
+          },
+          {
+            "name": "ancient times",
+            "rate": 0
+          },
+          {
+            "name": "science fiction",
+            "rate": 3
+          },
+          {
+            "name": "classic",
+            "rate": 5
+          }
+        ]
+      },
+      {
+        "title": "The Lord of Ring J.R.R.",
+        "categories": [
+          {
+            "name": "philosophy",
+            "rate": 0
+          },
+          {
+            "name": "poetry",
+            "rate": 0
+          },
+          {
+            "name": "ancient times",
+            "rate": 0
+          },
+          {
+            "name": "science fiction",
+            "rate": 0
+          },
+          {
+            "name": "classic",
+            "rate": 3
+          }
+        ]
+      },
+      {
+        "title": "King kong theory V.D.",
+        "categories": [
+          {
+            "name": "philosophy",
+            "rate": 2
+          },
+          {
+            "name": "history",
+            "rate": 2
+          },
+          {
+            "name": "ancient times",
+            "rate": 0
+          },
+          {
+            "name": "science fiction",
+            "rate": 0
+          },
+          {
+            "name": "classic",
+            "rate": 0
+          }
+        ]
+      }
+    ]
+  },
+  "favoriteBooks": [
+    "Odyssee H.","Illiade H.", "King kong theory V.D."
+  ]
+}

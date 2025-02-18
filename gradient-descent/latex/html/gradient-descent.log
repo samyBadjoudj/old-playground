@@ -1,0 +1,645 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2023.2.25)  11 MAR 2023 09:59
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCo
+de"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.
+{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\
+documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname
+ tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{
+\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode .a.b.c.\input  ../gradient-
+descent
+ (../gradient-descent
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/tex4ht.sty
+version 2021-09-14-14:11
+Package: tex4ht 
+--------------------------------------
+--- Note --- for _ at preamble, use the command line option `early_'
+--------------------------------------
+--------------------------------------
+--- Note --- for ^ at preamble, use the command line option `early^'
+--------------------------------------
+\tmp:toks=\toks16
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/usepackage.4ht
+version 2022-01-11-14:12
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/graphics-hooks.4ht
+version 2020-10-17-13:53
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 107.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+))
+\Gin@req@height=\dimen139
+\Gin@req@width=\dimen140
+)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count193
+\float@exts=\toks20
+\float@box=\box50
+\@float@everytoks=\toks21
+\@floatcapt=\box51
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks22
+\c@algorithm=\count194
+)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count195
+\c@ALG@rem=\count196
+\c@ALG@nested=\count197
+\ALG@tlm=\skip49
+\ALG@thistlm=\skip50
+\c@ALG@Lnr=\count198
+\c@ALG@blocknr=\count199
+\c@ALG@storecount=\count266
+\c@ALG@tmpcounter=\count267
+\ALG@tmplength=\skip51
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/share/texlive/texmf-dist/tex/latex/tabto-ltx/tabto.sty
+Package: tabto 2018/12/28  v 1.4  Another tabbing mechanism
+\CurrentLineWidth=\dimen141
+\TabPrevPos=\dimen142
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks23
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/tex4ht.4ht
+version 2021-06-20-15:33
+--------------------------------------
+--- Note --- for additional information, use the command line option `info'
+--------------------------------------
+
+::::::::::::::::::::::::::::::::::::::::::
+ TeX4ht info is available in the log file 
+::::::::::::::::::::::::::::::::::::::::::
+) (/usr/share/texlive/texmf-dist/tex/generic/tex4ht/tex4ht.sty
+version 2021-09-14-14:11
+
+l.855 --- TeX4ht warning --- nonprimitive \everypar ---
+--- needs --- tex4ht gradient-descent ---
+\tmp:cnt=\count268
+\openout15 = `gradient-descent.tmp'.
+
+(./gradient-descent.tmp)
+\tmp:dim=\skip52
+--------------------------------------
+--- Note --- for XML code, use the command line option `xml' or `xhtml'
+--------------------------------------
+ (./gradient-descent.xref)
+\:refout=\write3
+\openout3 = `gradient-descent.xref'.
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+--------------------------------------
+--- Note --- to remove the <?xml version=...?> processing instruction use the c
+ommand line option `no-VERSION'
+--------------------------------------
+--------------------------------------
+--- Note --- to remove the DOCTYPE declaration use the command line option `no-
+DOCTYPE'
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+)
+--------------------------------------
+--- Note --- for marking of the base font, use the command line option `fonts+'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for non active _, use the command line option `no_'
+--------------------------------------
+--------------------------------------
+--- Note --- for _ of catcode 13, use the command line option `_13'
+--------------------------------------
+--------------------------------------
+--- Note --- for non active ^, use the command line option `no^'
+--------------------------------------
+--------------------------------------
+--- Note --- for ^ of catcode 13, use the command line option `^13'
+--------------------------------------
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+--------------------------------------
+--- Note --- for alternative charset, use the command line option `charset=...'
+
+--------------------------------------
+--------------------------------------
+--- Note --- to ignore CSS font decoration, use the `NoFonts' command line opti
+on
+--------------------------------------
+--------------------------------------
+--- Note --- for jpg bitmaps of pictures, use the `jpg' command line option. (C
+haracter bitmaps are controled only by `g' records of tex4ht.env and `-g' switc
+hes of tex4ht.c) 
+--------------------------------------
+--------------------------------------
+--- Note --- for gif bitmaps of pictures, use the `gif' command line option. (C
+haracter bitmaps are controled only by `g' records of tex4ht.env and `-g' switc
+hes of tex4ht.c) 
+--------------------------------------
+--------------------------------------
+--- Note --- for content and toc in 2 frames, use the command line option `fram
+es'
+--------------------------------------
+--------------------------------------
+--- Note --- for content, toc, and footnotes in 3 frames, use the command line 
+option `frames-fn'
+--------------------------------------
+--------------------------------------
+--- Note --- for file extension name xht, use the command line option `xht'
+--------------------------------------
+TeX4ht package options: html
+--------------------------------------
+--- Note --- To print a timestamp, use the command line option timestamp
+--------------------------------------
+--------------------------------------
+--- Note --- to ignore CSS code, use the command line option `-css
+--------------------------------------
+--------------------------------------
+--- Note --- for inline CSS code, use the command line option `css-in'
+--------------------------------------
+--------------------------------------
+--- Note --- for pop ups on mouse over, use the command line option `mouseover'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for addressing images in a subdirectory, use the command line opti
+on `imgdir:.../'
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+)
+\:tokwrite=\toks24
+\:tokpage=\toks25
+--------------------------------------
+--- Note --- for back links to toc, use the command line option `sections+'
+--------------------------------------
+--------------------------------------
+--- Note --- for linear crosslinks of pages, use the command line option `next'
+
+--------------------------------------
+\openout15 = `gradient-descent.4ct'.
+
+\:tocout=\write4
+\openout4 = `gradient-descent.4tc'.
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/latex.4ht
+version 2022-02-01-14:27
+LaTeX Info: Redefining \_ on input line 173.
+LaTeX Info: Redefining \, on input line 792.
+LaTeX Info: Redefining \; on input line 793.
+LaTeX Info: Redefining \! on input line 794.
+LaTeX Info: Redefining \: on input line 795.
+LaTeX Info: Redefining \> on input line 796.
+--------------------------------------
+--- Note --- for links into captions, instead of float heads, use the command l
+ine option `refcaption'
+--------------------------------------
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+--------------------------------------
+--- Note --- For mini tocs immediately aftter the header use the command line o
+ption `minitoc<'
+--------------------------------------
+--------------------------------------
+--- Note --- for enumerated list elements with valued data, use the command lin
+e option `enumerate+'
+--------------------------------------
+--------------------------------------
+--- Note --- for enumerated list elements li's with value attributes, use the c
+ommand line option `enumerate-'
+--------------------------------------
+--------------------------------------
+--- Note --- for CSS2 code, use the command line option `css2'
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial tabular, use the command line option `pic-tabular'
+--------------------------------------
+--------------------------------------
+--- Note --- for bitmap fbox'es, use the command line option `pic-fbox'
+--------------------------------------
+--------------------------------------
+--- Note --- for bitmap framebox'es, use the command line option `pic-framebox'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for inline footnotes use command line option `fn-in'
+--------------------------------------
+--------------------------------------
+--- Note --- for tracing of latex font commands, use the command line option `f
+onts'
+--------------------------------------
+--------------------------------------
+--- Note --- for width specifications of tabular p entries, use the `p-width' c
+ommand line option or a configuration similar to \Configure{HColWidth}{\HCode{ 
+style="width:\HColWidth"}}
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+--------------------------------------
+--- Note --- for pictorial eqnarray, use the command line option `pic-eqnarray'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial array, use the command line option `pic-array'
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial $...$ environments, use the command line option `pic
+-m' (not recommended!!)
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial $...$ and $$...$$ environments with latex alt, use t
+he command line option `pic-m+' (not safe!!)
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial array, use the command line option `pic-array'
+--------------------------------------
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/fontmath.4ht
+version 2018-11-06-15:55
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/article.4ht
+version 2021-05-16-09:21
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+--------------------------------------
+--- Note --- for automatic sectioning pagination, use the command line option `
+1', `2', `3', '4', '5', '6', or '7'
+--------------------------------------
+--------------------------------------
+--- Note --- for files named derived from section titles, use the command line 
+option `sec-filename'
+--------------------------------------
+--------------------------------------
+--- Note --- for i-columns index, use the command line option `index=i' (e.g., 
+index=2)
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/inputenc.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/graphicx.4ht
+version 2022-01-12-13:53
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/graphics.4ht
+version 2021-08-12-13:49
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+--------------------------------------
+--- Note --- if included graphics are of degraded quality, try the command line
+ options `graphics-num' or `graphics-'. The `num' should provide the density of
+ pixels in the bitmaps (e.g., 110). 
+--------------------------------------
+--------------------------------------
+--- Note --- for key dimensions try the option `Gin-dim'; for key dimensions wh
+en bounding box is unavailable try `Gin-dim+'; neither is recommended
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/dvips.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/algorithm.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/float.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/ifthen.4ht
+version 2022-01-02-14:32
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/algorithmicx.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/amssymb.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/amsfonts.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2022-02-03-14:35
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2021-04-16-13:27
+))
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+File: l3backend-dvips.def 2022-01-12 L3 backend support: dvips
+\l__pdf_internal_box=\box52
+\g__pdf_backend_object_int=\count269
+\l__pdf_backend_content_box=\box53
+\l__pdf_backend_model_box=\box54
+\g__pdf_backend_annotation_int=\count270
+\g__pdf_backend_link_int=\count271
+\g__pdf_backend_link_sf_int=\count272
+)
+(./gradient-descent.aux
+
+LaTeX Warning: Label `fig:awesome_image2' multiply defined.
+
+
+LaTeX Warning: Label `fig:awesome_image3' multiply defined.
+
+)
+\openout1 = `gradient-descent.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+--- file gradient-descent.css ---
+ [1
+
+] [2]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 19.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+l. 43 Writing gradient-descent.idv[1] (gradient-descent0x.png)
+ [3]
+
+LaTeX Warning: File `x_y_surface.png' not found on input line 52.
+
+l.52 --- TeX4ht warning --- File `"x_y_surface.xbb"' not found ---
+l.52 --- TeX4ht warning --- Cannot determine size of graphic in "x_y_surface.xb
+b" (no BoundingBox) ---
+l. 52 --- needs --- x_y_surface.png ---
+
+LaTeX Warning: File `sin_x.png' not found on input line 56.
+
+l.56 --- TeX4ht warning --- File `"sin_x.xbb"' not found ---
+l.56 --- TeX4ht warning --- Cannot determine size of graphic in "sin_x.xbb" (no
+ BoundingBox) ---
+l. 56 --- needs --- sin_x.png ---
+
+LaTeX Warning: File `x+13+x2.png' not found on input line 60.
+
+l.60 --- TeX4ht warning --- File `"x+13+x2.xbb"' not found ---
+l.60 --- TeX4ht warning --- Cannot determine size of graphic in "x+13+x2.xbb" (
+no BoundingBox) ---
+l. 60 --- needs --- x+13+x2.png ---
+
+LaTeX Warning: File `1_over_x.png' not found on input line 71.
+
+l.71 --- TeX4ht warning --- File `"1_over_x.xbb"' not found ---
+l.71 --- TeX4ht warning --- Cannot determine size of graphic in "1_over_x.xbb" 
+(no BoundingBox) ---
+l. 71 --- needs --- 1_over_x.png ---
+
+LaTeX Warning: File `x_over_xabs.png' not found on input line 75.
+
+l.75 --- TeX4ht warning --- File `"x_over_xabs.xbb"' not found ---
+l.75 --- TeX4ht warning --- Cannot determine size of graphic in "x_over_xabs.xb
+b" (no BoundingBox) ---
+l. 75 --- needs --- x_over_xabs.png ---
+
+LaTeX Warning: File `x_abs.png' not found on input line 79.
+
+l.79 --- TeX4ht warning --- File `"x_abs.xbb"' not found ---
+l.79 --- TeX4ht warning --- Cannot determine size of graphic in "x_abs.xbb" (no
+ BoundingBox) ---
+l. 79 --- needs --- x_abs.png ---
+[4] [5] [6
+
+]
+l. 104 Writing gradient-descent.idv[2] (gradient-descent1x.png)
+l. 106 Writing gradient-descent.idv[3] (gradient-descent2x.png)
+l. 108 Writing gradient-descent.idv[4] (gradient-descent3x.png)
+l. 110 Writing gradient-descent.idv[5] (gradient-descent4x.png)
+l. 116 Writing gradient-descent.idv[6] (gradient-descent5x.png)
+ [7
+
+]
+
+LaTeX Warning: File `true_anomaly.png' not found on input line 138.
+
+l.138 --- TeX4ht warning --- File `"true_anomaly.xbb"' not found ---
+l.138 --- TeX4ht warning --- Cannot determine size of graphic in "true_anomaly.
+xbb" (no BoundingBox) ---
+l. 138 --- needs --- true_anomaly.png ---
+l. 155 Writing gradient-descent.idv[7] (gradient-descent6x.png)
+l. 155 Writing gradient-descent.idv[8] (gradient-descent7x.png)
+[8
+
+] [9]
+l. 173 Writing gradient-descent.idv[9] (gradient-descent8x.png)
+
+
+LaTeX Warning: File `get_radius_from_focus_in_km.png' not found on input line 1
+81.
+
+l.181 --- TeX4ht warning --- File `"get_radius_from_focus_in_km.xbb"' not found
+ ---
+l.181 --- TeX4ht warning --- Cannot determine size of graphic in "get_radius_fr
+om_focus_in_km.xbb" (no BoundingBox) ---
+l. 181 --- needs --- get_radius_from_focus_in_km.png ---
+
+LaTeX Warning: File `get_orbital_speed.png' not found on input line 188.
+
+l.188 --- TeX4ht warning --- File `"get_orbital_speed.xbb"' not found ---
+l.188 --- TeX4ht warning --- Cannot determine size of graphic in "get_orbital_s
+peed.xbb" (no BoundingBox) ---
+l. 188 --- needs --- get_orbital_speed.png ---
+[10]
+
+LaTeX Warning: File `get_min_gradient_descent.png' not found on input line 196.
+
+
+l.196 --- TeX4ht warning --- File `"get_min_gradient_descent.xbb"' not found --
+-
+l.196 --- TeX4ht warning --- Cannot determine size of graphic in "get_min_gradi
+ent_descent.xbb" (no BoundingBox) ---
+l. 196 --- needs --- get_min_gradient_descent.png ---
+
+LaTeX Warning: File `gradient_descent.png' not found on input line 204.
+
+l.204 --- TeX4ht warning --- File `"gradient_descent.xbb"' not found ---
+l.204 --- TeX4ht warning --- Cannot determine size of graphic in "gradient_desc
+ent.xbb" (no BoundingBox) ---
+l. 204 --- needs --- gradient_descent.png ---
+[11] [12] (./gradient-descent.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 6195 strings out of 480172
+ 86268 string characters out of 5894515
+ 489581 words of memory out of 5000000
+ 24006 multiletter control sequences out of 15000+600000
+ 478232 words of font info for 63 fonts, out of 8000000 for 9000
+ 59 hyphenation exceptions out of 8191
+ 60i,6n,81p,811b,513s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on gradient-descent.dvi (12 pages, 36040 bytes).

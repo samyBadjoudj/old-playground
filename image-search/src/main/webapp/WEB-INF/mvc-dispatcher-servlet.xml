@@ -1,0 +1,104 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:annotation-driven/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <bean  class="com.sam.imagesearch.controllers.ImageCatalogOperationController" />
+    <bean  class="com.sam.imagesearch.controllers.ImageSimilarityJSONController" />
+
+    <!-- Configure the multipart resolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum imageData size in bytes -->
+        <property name="maxUploadSize" value="10000000"/>
+    </bean>
+
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+        <property name="locations">
+            <list>
+                <value>classpath*:jdbc.properties</value>
+                <value>classpath*:image-operations.properties</value>
+            </list>
+
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+          </bean>
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.databaseurl}" p:username="${jdbc.username}"
+          p:password="${jdbc.password}"/>
+
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan">
+            <value>com.sam.imagesearch.entity</value>
+        </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${jdbc.dialect}</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+
+    <tx:annotation-driven />
+    <context:annotation-config/>
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean name="sobelFilter" class="com.sam.imagesearch.service.imageprocessing.SobelFilterImpl"/>
+    <bean name="histogramExctractor" class="com.sam.imagesearch.service.imageprocessing.HistogramExtractorImpl"/>
+    <bean name="signalComparator" class="com.sam.imagesearch.service.computation.SignalComparatorImpl"/>
+
+    <bean name="imageCatalog" class="com.sam.imagesearch.service.catalog.ImageCatalogImpl" >
+        <constructor-arg index="0" ref="sobelFilter"/>
+        <constructor-arg index="1" ref="histogramExctractor"/>
+        <constructor-arg index="2" ref="imageDao"/>
+        <constructor-arg index="3" ref="signalComparator"/>
+        <constructor-arg index="4" ref="distanceDao"/>
+        <constructor-arg index="5" ref="imageTools"/>
+    </bean>
+
+    <bean name="imageTools" class="com.sam.imagesearch.service.tools.ImageToolsOperationsImpl">
+
+        <constructor-arg index="0" value="${imo.thumb.height}"   type="java.lang.Integer"/>
+        <constructor-arg index="1" value="${imo.thumb.width}"    type="java.lang.Integer"/>
+        <constructor-arg index="2" value="${imo.path.thumb}"     type="java.lang.String"/>
+        <constructor-arg index="3" value="${imo.path.original}"  type="java.lang.String"/>
+        <constructor-arg index="4" value="${imo.extract.height}" type="java.lang.Integer"/>
+        <constructor-arg index="5" value="${imo.extract.width}"  type="java.lang.Integer"/>
+
+    </bean>
+
+    <bean name="imageDao" class="com.sam.imagesearch.dao.ImageDaoImplementation">
+        <constructor-arg index="0" name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean name="distanceDao" class="com.sam.imagesearch.dao.SimilarityDaoImpl">
+        <constructor-arg index="0" name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+</beans>
